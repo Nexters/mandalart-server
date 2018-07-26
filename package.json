@@ -1,0 +1,16 @@
+{
+  "name": "mandalart-server",
+  "version": "1.0.0",
+  "description": "Server for the Mandalart based on GraphQL, Typescript, Nodejs",
+  "main": "index.js",
+  "repository": "https://github.com/Nexters/mandalart-server.git",
+  "author": "heeinso <heeinso@snu.ac.kr>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^10.5.3",
+    "nodemon": "^1.18.3",
+    "ts-node": "^7.0.0",
+    "tslint-config-prettier": "^1.14.0",
+    "typescript": "^2.9.2"
+  }
+}
