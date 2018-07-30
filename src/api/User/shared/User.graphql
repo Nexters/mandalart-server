@@ -10,3 +10,7 @@ type User {
   updatedAt: String
   fullName: String
 }
+
+type Query {
+  user: User
+}
