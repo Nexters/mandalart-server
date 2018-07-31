@@ -18,7 +18,7 @@ const resolvers: Resolvers = {
           return {
             ok: true,
             error: null,
-            token: 'not yet',
+            token: 'not yet, but user already exists',
           };
         }
       } catch (error) {
@@ -37,7 +37,7 @@ const resolvers: Resolvers = {
         return {
           ok: true,
           error: null,
-          token: 'not yet',
+          token: 'not yet, but user is created',
         };
       } catch (error) {
         return {
