@@ -1,0 +1,7 @@
+type Mandalart {
+  id: Int!
+  name: String!
+  content: [String]!
+  createdAt: String!
+  updatedAt: String
+}
