@@ -2,6 +2,7 @@ type Mandalart {
   id: Int!
   name: String!
   content: [String]!
+  user: User!
   createdAt: String!
   updatedAt: String
 }

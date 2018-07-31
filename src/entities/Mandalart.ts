@@ -5,7 +5,9 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
+import User from './User';
 
 @Entity()
 class Mandalart extends BaseEntity {
@@ -13,6 +15,12 @@ class Mandalart extends BaseEntity {
 
   @Column({ type: 'text' })
   name: string;
+
+  @Column({ type: 'text', array: true, nullable: true })
+  content: string[];
+
+  @ManyToOne(type => User, user => user.mandalarts)
+  user: User;
 
   @CreateDateColumn() createdAt: string;
 

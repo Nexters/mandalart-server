@@ -9,6 +9,8 @@ type User {
   createdAt: String!
   updatedAt: String
   fullName: String
+  fbId: String
+  mandalarts: [Mandalart]
 }
 
 type Query {

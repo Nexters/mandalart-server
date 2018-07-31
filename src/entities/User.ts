@@ -9,7 +9,9 @@ import {
   UpdateDateColumn,
   BeforeInsert,
   BeforeUpdate,
+  OneToMany,
 } from 'typeorm';
+import Mandalart from './Mandalart';
 
 const BCRYPT_ROUNDS = 10;
 
@@ -17,9 +19,9 @@ const BCRYPT_ROUNDS = 10;
 class User extends BaseEntity {
   @PrimaryGeneratedColumn() id: number;
 
-  @Column({ type: 'text', unique: true })
+  @Column({ type: 'text', nullable: true })
   @IsEmail()
-  email: string;
+  email: string | null;
 
   @Column({ type: 'text' })
   firstName: string;
@@ -27,7 +29,7 @@ class User extends BaseEntity {
   @Column({ type: 'text' })
   lastName: string;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', nullable: true })
   age: number;
 
   @Column({ type: 'text' })
@@ -39,6 +41,12 @@ class User extends BaseEntity {
   @CreateDateColumn() createdAt;
 
   @UpdateDateColumn() updatedAt;
+
+  @Column({ type: 'text', nullable: true })
+  fbId: string;
+
+  @OneToMany(type => Mandalart, mandalart => mandalart.user)
+  mandalarts: Mandalart[];
 
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;

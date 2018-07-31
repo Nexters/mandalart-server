@@ -2,8 +2,19 @@ type Mandalart {
   id: Int!
   name: String!
   content: [String]!
+  user: User!
   createdAt: String!
   updatedAt: String
+}
+
+type FacebookConnectResponse {
+  ok: Boolean!
+  error: String
+  token: String
+}
+
+type Mutation {
+  FacebookConnect(firstName: String!, lastName: String!, email: String!, fbId: String!): FacebookConnectResponse!
 }
 
 type User {
@@ -17,6 +28,8 @@ type User {
   createdAt: String!
   updatedAt: String
   fullName: String
+  fbId: String
+  mandalarts: [Mandalart]
 }
 
 type Query {
