@@ -22,6 +22,12 @@ class Mandalart extends BaseEntity {
   @ManyToOne(type => User, user => user.mandalarts)
   user: User;
 
+  @Column({type: 'date'})
+  startDate: Date
+
+  @Column({type: 'date'})
+  endDate: Date
+
   @CreateDateColumn() createdAt: string;
 
   @UpdateDateColumn() updatedAt: string;

@@ -3,6 +3,8 @@ type Mandalart {
   name: String!
   content: [String]!
   user: User!
+  startDate: String
+  endDate: String
   createdAt: String!
   updatedAt: String
 }
