@@ -1,12 +1,23 @@
 type Mandalart {
   id: Int!
   name: String!
-  content: [String]!
-  user: User!
   startDate: String
   endDate: String
   createdAt: String!
   updatedAt: String
+  achievementRate: Int!
+  user: User!
+  todos: [Todo]!
+}
+
+type Todo {
+  id: Int!
+  title: String!
+  description: String
+  isAchieved: Boolean!
+  createdAt: String!
+  updatedAt: String
+  mandalart: Mandalart!
 }
 
 type FacebookConnectResponse {
@@ -31,7 +42,7 @@ type User {
   updatedAt: String
   fullName: String
   fbId: String
-  mandalarts: [Mandalart]
+  mandalarts: [Mandalart]!
 }
 
 type Query {
