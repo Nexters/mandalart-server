@@ -13,7 +13,3 @@ type User {
   mandalarts: [Mandalart]!
   todos: [Todo]!
 }
-
-type Query {
-  user: User
-}
