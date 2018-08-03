@@ -31,13 +31,13 @@ class User extends BaseEntity {
   lastName: string;
 
   @Column({ type: 'int', nullable: true })
-  age: number;
+  age: number | null;
 
   @Column({ type: 'text', nullable: true })
   password: string;
 
-  @Column({ type: 'text' })
-  profileImage: string;
+  @Column({ type: 'text', nullable: true })
+  profileImage: string | null;
 
   @CreateDateColumn() createdAt;
 

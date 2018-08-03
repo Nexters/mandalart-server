@@ -1,41 +1,33 @@
 import User from '../../../entities/User';
 import {
-  EmailSignInMutationArgs,
-  EmailSignInResponse,
+  EmailSignUpMutationArgs,
+  EmailSignUpResponse,
 } from '../../../types/graph';
 import { Resolvers } from '../../../types/resolvers';
 import createJWT from '../../../utils/createJWT';
 
 const resolvers: Resolvers = {
   Mutation: {
-    EmailSignIn: async (
+    EmailSignUp: async (
       _,
-      args: EmailSignInMutationArgs
-    ): Promise<EmailSignInResponse> => {
-      const { email, password } = args;
+      args: EmailSignUpMutationArgs
+    ): Promise<EmailSignUpResponse> => {
+      const { email } = args;
       try {
-        const user = await User.findOne({ email });
-        if (!user) {
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
           return {
             ok: false,
-            error: 'No User found with that email',
+            error: 'This email is already existing.',
             token: null,
           };
-        }
-
-        const checkPassword = await user.comparePassword(password);
-        if (checkPassword) {
-          const token = createJWT(user.id);
+        } else {
+          const newUser = await User.create({ ...args }).save();
+          const token = createJWT(newUser.id);
           return {
             ok: true,
             error: null,
             token,
-          };
-        } else {
-          return {
-            ok: false,
-            error: 'Wrong password!',
-            token: null,
           };
         }
       } catch (error) {
@@ -48,4 +40,5 @@ const resolvers: Resolvers = {
     },
   },
 };
+
 export default resolvers;
