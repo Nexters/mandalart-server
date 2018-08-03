@@ -6,8 +6,10 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
 import User from './User';
+import Todo from './Todo';
 
 @Entity()
 class Mandalart extends BaseEntity {
@@ -22,11 +24,14 @@ class Mandalart extends BaseEntity {
   @ManyToOne(type => User, user => user.mandalarts)
   user: User;
 
-  @Column({type: 'date'})
-  startDate: Date
+  @OneToMany(type => Todo, todo => todo.mandalart)
+  todos: Todo[];
 
-  @Column({type: 'date'})
-  endDate: Date
+  @Column({ type: 'date' })
+  startDate: Date;
+
+  @Column({ type: 'date' })
+  endDate: Date;
 
   @CreateDateColumn() createdAt: string;
 

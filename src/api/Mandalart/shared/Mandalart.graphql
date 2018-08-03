@@ -1,10 +1,12 @@
 type Mandalart {
   id: Int!
   name: String!
-  content: [String]!
-  user: User!
   startDate: String
   endDate: String
   createdAt: String!
   updatedAt: String
+  achievementRate: Int!
+
+  user: User!
+  todos: [Todo]!
 }
