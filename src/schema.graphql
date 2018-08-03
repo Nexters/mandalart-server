@@ -17,17 +17,25 @@ type Todo {
   isAchieved: Boolean!
   createdAt: String!
   updatedAt: String
+  user: User!
   mandalart: Mandalart!
 }
 
-type FacebookConnectResponse {
+type EmailSignInResponse {
   ok: Boolean!
   error: String
   token: String
 }
 
 type Mutation {
+  EmailSignIn(email: String!, password: String!): EmailSignInResponse!
   FacebookConnect(firstName: String!, lastName: String!, email: String!, fbId: String!): FacebookConnectResponse!
+}
+
+type FacebookConnectResponse {
+  ok: Boolean!
+  error: String
+  token: String
 }
 
 type User {
@@ -43,6 +51,7 @@ type User {
   fullName: String
   fbId: String
   mandalarts: [Mandalart]!
+  todos: [Todo]!
 }
 
 type Query {

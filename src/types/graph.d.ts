@@ -1,4 +1,4 @@
-export const typeDefs = ["type Mandalart {\n  id: Int!\n  name: String!\n  startDate: String\n  endDate: String\n  createdAt: String!\n  updatedAt: String\n  achievementRate: Int!\n  user: User!\n  todos: [Todo]!\n}\n\ntype Todo {\n  id: Int!\n  title: String!\n  description: String\n  isAchieved: Boolean!\n  createdAt: String!\n  updatedAt: String\n  mandalart: Mandalart!\n}\n\ntype FacebookConnectResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype Mutation {\n  FacebookConnect(firstName: String!, lastName: String!, email: String!, fbId: String!): FacebookConnectResponse!\n}\n\ntype User {\n  id: Int!\n  email: String\n  password: String\n  firstName: String\n  lastName: String\n  age: Int\n  profileImage: String\n  createdAt: String!\n  updatedAt: String\n  fullName: String\n  fbId: String\n  mandalarts: [Mandalart]!\n}\n\ntype Query {\n  user: User\n}\n"];
+export const typeDefs = ["type Mandalart {\n  id: Int!\n  name: String!\n  startDate: String\n  endDate: String\n  createdAt: String!\n  updatedAt: String\n  achievementRate: Int!\n  user: User!\n  todos: [Todo]!\n}\n\ntype Todo {\n  id: Int!\n  title: String!\n  description: String\n  isAchieved: Boolean!\n  createdAt: String!\n  updatedAt: String\n  user: User!\n  mandalart: Mandalart!\n}\n\ntype EmailSignInResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype Mutation {\n  EmailSignIn(email: String!, password: String!): EmailSignInResponse!\n  FacebookConnect(firstName: String!, lastName: String!, email: String!, fbId: String!): FacebookConnectResponse!\n}\n\ntype FacebookConnectResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype User {\n  id: Int!\n  email: String\n  password: String\n  firstName: String\n  lastName: String\n  age: Int\n  profileImage: String\n  createdAt: String!\n  updatedAt: String\n  fullName: String\n  fbId: String\n  mandalarts: [Mandalart]!\n  todos: [Todo]!\n}\n\ntype Query {\n  user: User\n}\n"];
 /* tslint:disable */
 
 export interface Query {
@@ -18,6 +18,7 @@ export interface User {
   fullName: string | null;
   fbId: string | null;
   mandalarts: Array<Mandalart>;
+  todos: Array<Todo>;
 }
 
 export interface Mandalart {
@@ -39,11 +40,18 @@ export interface Todo {
   isAchieved: boolean;
   createdAt: string;
   updatedAt: string | null;
+  user: User;
   mandalart: Mandalart;
 }
 
 export interface Mutation {
+  EmailSignIn: EmailSignInResponse;
   FacebookConnect: FacebookConnectResponse;
+}
+
+export interface EmailSignInMutationArgs {
+  email: string;
+  password: string;
 }
 
 export interface FacebookConnectMutationArgs {
@@ -51,6 +59,12 @@ export interface FacebookConnectMutationArgs {
   lastName: string;
   email: string;
   fbId: string;
+}
+
+export interface EmailSignInResponse {
+  ok: boolean;
+  error: string | null;
+  token: string | null;
 }
 
 export interface FacebookConnectResponse {
