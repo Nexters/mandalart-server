@@ -1,0 +1,11 @@
+type Todo {
+  id: Int!
+  title: String!
+  description: String
+  isAchieved: Boolean!
+  createdAt: String!
+  updatedAt: String
+
+  user: User!
+  mandalart: Mandalart!
+}
