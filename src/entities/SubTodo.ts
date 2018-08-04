@@ -3,17 +3,17 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm';
+
 import Mandalart from './Mandalart';
 import User from './User';
-import SubTodo from './SubTodo';
+import Todo from './Todo';
 
 @Entity()
-class Todo extends BaseEntity {
+class SubTodo extends BaseEntity {
   @PrimaryGeneratedColumn() id: number;
 
   @Column({ type: 'text' })
@@ -31,12 +31,12 @@ class Todo extends BaseEntity {
   @ManyToOne(type => Mandalart, mandalart => mandalart.todos)
   mandalart: Mandalart;
 
-  @OneToMany(type => SubTodo, subTodo => subTodo.todo)
-  subTodos: SubTodo[];
+  @ManyToOne(type => Todo, todo => todo.subTodos)
+  todo: Todo;
 
   @CreateDateColumn() createdAt: string;
 
   @UpdateDateColumn() updatedAt: string;
 }
 
-export default Todo;
+export default SubTodo;

@@ -18,9 +18,6 @@ class Mandalart extends BaseEntity {
   @Column({ type: 'text' })
   name: string;
 
-  @Column({ type: 'text', array: true, nullable: true })
-  content: string[];
-
   @ManyToOne(type => User, user => user.mandalarts)
   user: User;
 

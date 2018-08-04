@@ -10,6 +10,18 @@ type Mandalart {
   todos: [Todo]!
 }
 
+type SubTodo {
+  id: Int!
+  title: String!
+  description: String
+  isAchieved: Boolean!
+  createdAt: String!
+  updatedAt: String
+  user: User!
+  mandalart: Mandalart!
+  todo: Todo!
+}
+
 type Todo {
   id: Int!
   title: String!
@@ -19,6 +31,7 @@ type Todo {
   updatedAt: String
   user: User!
   mandalart: Mandalart!
+  subTodos: [SubTodo]!
 }
 
 type EmailSignInResponse {
@@ -69,4 +82,5 @@ type User {
   fbId: String
   mandalarts: [Mandalart]!
   todos: [Todo]!
+  subTodos: [SubTodo]!
 }

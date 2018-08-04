@@ -1,4 +1,4 @@
-type Todo {
+type SubTodo {
   id: Int!
   title: String!
   description: String
@@ -8,5 +8,5 @@ type Todo {
 
   user: User!
   mandalart: Mandalart!
-  subTodos: [SubTodo]!
+  todo: Todo!
 }

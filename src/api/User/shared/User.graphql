@@ -12,4 +12,5 @@ type User {
   fbId: String
   mandalarts: [Mandalart]!
   todos: [Todo]!
+  subTodos: [SubTodo]!
 }
