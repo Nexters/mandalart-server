@@ -1,0 +1,12 @@
+type AddMandalartResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  AddMandalart(
+    name: String!
+    startDate: String!
+    endDate: String!
+  ): AddMandalartResponse!
+}
