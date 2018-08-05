@@ -1,0 +1,9 @@
+type GetMyMandalartsResponse {
+  ok: Boolean!
+  error: String
+  mandalarts: [Mandalart]
+}
+
+type Query {
+  GetMyMandalarts: GetMyMandalartsResponse!
+}

@@ -10,6 +10,17 @@ type Mutation {
   FacebookConnect(firstName: String!, lastName: String!, email: String!, fbId: String!): FacebookConnectResponse!
 }
 
+type GetMyMandalartsResponse {
+  ok: Boolean!
+  error: String
+  mandalarts: [Mandalart]
+}
+
+type Query {
+  GetMyMandalarts: GetMyMandalartsResponse!
+  GetMyProfile: GetMyProfileResponse!
+}
+
 type Mandalart {
   id: Int!
   name: String!
@@ -17,7 +28,7 @@ type Mandalart {
   endDate: String!
   createdAt: String!
   updatedAt: String
-  achievementRate: Int!
+  achievementRate: Int
   user: User!
   todos: [Todo]!
 }
@@ -68,10 +79,6 @@ type GetMyProfileResponse {
   ok: Boolean!
   error: String
   user: User
-}
-
-type Query {
-  GetMyProfile: GetMyProfileResponse!
 }
 
 type User {

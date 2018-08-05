@@ -18,17 +18,20 @@ class Mandalart extends BaseEntity {
   @Column({ type: 'text' })
   name: string;
 
+  @Column({ type: 'int', nullable: true })
+  achievementRate: number | null;
+
   @ManyToOne(type => User, user => user.mandalarts)
   user: User;
 
   @OneToMany(type => Todo, todo => todo.mandalart)
   todos: Todo[];
 
-  @Column({ type: 'date' })
-  startDate: Date;
+  @Column({ type: 'text' })
+  startDate: string;
 
-  @Column({ type: 'date' })
-  endDate: Date;
+  @Column({ type: 'text' })
+  endDate: string;
 
   @CreateDateColumn() createdAt: string;
 

@@ -13,6 +13,7 @@ import {
 } from 'typeorm';
 import Mandalart from './Mandalart';
 import Todo from './Todo';
+import SubTodo from './SubTodo';
 
 const BCRYPT_ROUNDS = 10;
 
@@ -51,6 +52,9 @@ class User extends BaseEntity {
 
   @OneToMany(type => Todo, todo => todo.user)
   todos: Todo[];
+
+  @OneToMany(type => SubTodo, subTodo => subTodo.user)
+  subTodos: SubTodo[];
 
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;

@@ -5,7 +5,7 @@ type Mandalart {
   endDate: String!
   createdAt: String!
   updatedAt: String
-  achievementRate: Int!
+  achievementRate: Int
 
   user: User!
   todos: [Todo]!
