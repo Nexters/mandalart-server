@@ -14,3 +14,7 @@ type User {
   todos: [Todo]!
   subTodos: [SubTodo]!
 }
+
+type Query {
+  Users: [User!]!
+}

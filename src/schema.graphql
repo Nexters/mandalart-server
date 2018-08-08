@@ -19,6 +19,7 @@ type GetMyMandalartsResponse {
 type Query {
   GetMyMandalarts: GetMyMandalartsResponse!
   GetMyProfile: GetMyProfileResponse!
+  Users: [User!]!
 }
 
 type Mandalart {
