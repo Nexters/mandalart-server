@@ -19,8 +19,14 @@ class Todo extends BaseEntity {
   @Column({ type: 'text' })
   title: string;
 
-  @Column({ type: 'text', nullable: true })
-  description: string;
+  @Column({ type: 'text' })
+  startDate: string;
+
+  @Column({ type: 'text' })
+  endDate: string;
+
+  @Column({ type: 'text', array: true, nullable: true })
+  comments: string[];
 
   @Column({ type: 'boolean', default: false })
   isAchieved: boolean;

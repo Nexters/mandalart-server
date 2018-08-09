@@ -1,0 +1,14 @@
+type AddTodoResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  AddTodo(
+    title: String!
+    startDate: String!
+    endDate: String!
+    comments: [String]!
+    isAchieved: Boolean!
+  ): AddMandalartResponse!
+}
