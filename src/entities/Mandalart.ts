@@ -21,6 +21,9 @@ class Mandalart extends BaseEntity {
   @Column({ type: 'int', nullable: true })
   achievementRate: number | null;
 
+  @Column({ nullable: true })
+  userId: number;
+
   @ManyToOne(type => User, user => user.mandalarts)
   user: User;
 
@@ -32,6 +35,9 @@ class Mandalart extends BaseEntity {
 
   @Column({ type: 'text' })
   endDate: string;
+
+  @Column({ type: 'text', nullable: true })
+  goal: string | null;
 
   @CreateDateColumn() createdAt: string;
 
