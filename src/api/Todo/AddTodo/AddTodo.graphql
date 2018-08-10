@@ -1,14 +1,16 @@
 type AddTodoResponse {
   ok: Boolean!
   error: String
+  todo: Todo
 }
 
 type Mutation {
   AddTodo(
+    mandalartId: Int!
     title: String!
     startDate: String!
     endDate: String!
     comments: [String]
     isAchieved: Boolean! = false
-  ): AddMandalartResponse!
+  ): AddTodoResponse!
 }
