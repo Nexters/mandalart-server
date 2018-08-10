@@ -3,7 +3,7 @@ type Todo {
   title: String!
   startDate: String!
   endDate: String!
-  comments: [String]!
+  comments: [String]
   isAchieved: Boolean!
   createdAt: String!
   updatedAt: String

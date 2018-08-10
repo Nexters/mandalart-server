@@ -8,7 +8,7 @@ type Mutation {
     title: String!
     startDate: String!
     endDate: String!
-    comments: [String]!
-    isAchieved: Boolean!
+    comments: [String]
+    isAchieved: Boolean! = false
   ): AddMandalartResponse!
 }
