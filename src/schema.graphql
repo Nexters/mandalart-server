@@ -5,11 +5,17 @@ type AddMandalartResponse {
 
 type Mutation {
   AddMandalart(name: String!, startDate: String!, endDate: String!, goal: String!): AddMandalartResponse!
+  DeleteMandalart(mandalartId: Int!): DeleteMandalartResponse!
   EditMandalart(mandalartId: Int!, name: String, endDate: String, goal: String): EditMandalartResponse!
-  AddTodo(title: String!, startDate: String!, endDate: String!, comments: [String]!, isAchieved: Boolean!): AddMandalartResponse!
+  AddTodo(title: String!, startDate: String!, endDate: String!, comments: [String], isAchieved: Boolean!): AddMandalartResponse!
   EmailSignIn(email: String!, password: String!): EmailSignInResponse!
   EmailSignUp(email: String!, password: String!, firstName: String!, lastName: String!, age: Int, profileImage: String): EmailSignUpResponse!
   FacebookConnect(firstName: String!, lastName: String!, email: String!, fbId: String!): FacebookConnectResponse!
+}
+
+type DeleteMandalartResponse {
+  ok: Boolean!
+  error: String
 }
 
 type EditMandalartResponse {
@@ -64,7 +70,7 @@ type Todo {
   title: String!
   startDate: String!
   endDate: String!
-  comments: [String]!
+  comments: [String]
   isAchieved: Boolean!
   createdAt: String!
   updatedAt: String

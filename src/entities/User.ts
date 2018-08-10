@@ -50,8 +50,8 @@ class User extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   fbId: string;
 
-  @OneToMany(type => Mandalart, mandalart => mandalart.user)
-  mandalarts: Mandalart[];
+  @OneToMany(type => Mandalart, mandalart => mandalart.user, { nullable: true })
+  mandalarts: Mandalart[] | null;
 
   @OneToMany(type => Todo, todo => todo.user)
   todos: Todo[];

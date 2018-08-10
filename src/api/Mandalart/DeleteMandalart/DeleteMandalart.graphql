@@ -1,0 +1,8 @@
+type DeleteMandalartResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  DeleteMandalart(mandalartId: Int!): DeleteMandalartResponse!
+}
