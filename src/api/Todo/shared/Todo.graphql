@@ -1,5 +1,6 @@
 type Todo {
   id: Int!
+  mandalartId: Int
   title: String!
   startDate: String!
   endDate: String!

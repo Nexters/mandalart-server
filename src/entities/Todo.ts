@@ -14,7 +14,11 @@ import SubTodo from './SubTodo';
 
 @Entity()
 class Todo extends BaseEntity {
-  @PrimaryGeneratedColumn() id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ type: 'int' })
+  mandalartId: number;
 
   @Column({ type: 'text' })
   title: string;
@@ -40,9 +44,11 @@ class Todo extends BaseEntity {
   @OneToMany(type => SubTodo, subTodo => subTodo.todo)
   subTodos: SubTodo[];
 
-  @CreateDateColumn() createdAt: string;
+  @CreateDateColumn()
+  createdAt: string;
 
-  @UpdateDateColumn() updatedAt: string;
+  @UpdateDateColumn()
+  updatedAt: string;
 }
 
 export default Todo;
