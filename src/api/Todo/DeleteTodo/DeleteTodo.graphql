@@ -1,0 +1,8 @@
+type DeleteTodoResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  DeleteTodo(todoId: Int!): DeleteTodoResponse!
+}
