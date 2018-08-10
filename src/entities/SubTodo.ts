@@ -14,13 +14,26 @@ import Todo from './Todo';
 
 @Entity()
 class SubTodo extends BaseEntity {
-  @PrimaryGeneratedColumn() id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ type: 'int' })
+  todoId: number;
+
+  @Column({ nullable: true })
+  userId: number;
 
   @Column({ type: 'text' })
   title: string;
 
-  @Column({ type: 'text', nullable: true })
-  description: string;
+  @Column({ type: 'text' })
+  startDate: string;
+
+  @Column({ type: 'text' })
+  endDate: string;
+
+  @Column({ type: 'text', array: true, nullable: true })
+  comments: string[] | null;
 
   @Column({ type: 'boolean', default: false })
   isAchieved: boolean;
@@ -34,9 +47,11 @@ class SubTodo extends BaseEntity {
   @ManyToOne(type => Todo, todo => todo.subTodos)
   todo: Todo;
 
-  @CreateDateColumn() createdAt: string;
+  @CreateDateColumn()
+  createdAt: string;
 
-  @UpdateDateColumn() updatedAt: string;
+  @UpdateDateColumn()
+  updatedAt: string;
 }
 
 export default SubTodo;

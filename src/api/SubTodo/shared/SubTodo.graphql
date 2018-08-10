@@ -1,7 +1,10 @@
 type SubTodo {
   id: Int!
+  todoId: Int
   title: String!
-  description: String
+  startDate: String!
+  endDate: String!
+  comments: [String]
   isAchieved: Boolean!
   createdAt: String!
   updatedAt: String
