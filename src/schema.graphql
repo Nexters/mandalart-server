@@ -7,6 +7,7 @@ type Mutation {
   AddMandalart(name: String!, startDate: String!, endDate: String!, goal: String!): AddMandalartResponse!
   DeleteMandalart(mandalartId: Int!): DeleteMandalartResponse!
   EditMandalart(mandalartId: Int!, name: String, endDate: String, goal: String): EditMandalartResponse!
+  AddSubTodo(todoId: Int!, title: String!, startDate: String!, endDate: String!, comments: [String], isAchieved: Boolean! = false): AddSubTodoResponse!
   AddTodo(mandalartId: Int!, title: String!, startDate: String!, endDate: String!, comments: [String], isAchieved: Boolean! = false): AddTodoResponse!
   DeleteTodo(todoId: Int!): DeleteTodoResponse!
   EditTodo(todoId: Int!, title: String, endDate: String, comments: [String], isAchieved: Boolean!): EditTodoResponse!
@@ -33,6 +34,7 @@ type GetMyMandalartsResponse {
 
 type Query {
   GetMyMandalarts: GetMyMandalartsResponse!
+  GetSubTodosByTodoId(todoId: Int!): GetSubTodosByTodoIdResponse!
   GetTodosByMandalartId(mandalartId: Int!): GetTodosByMandalartIdResponse!
   GetMyProfile: GetMyProfileResponse!
   Users: [User!]!
@@ -51,10 +53,25 @@ type Mandalart {
   todos: [Todo]!
 }
 
+type AddSubTodoResponse {
+  ok: Boolean!
+  error: String
+  subTodo: SubTodo
+}
+
+type GetSubTodosByTodoIdResponse {
+  ok: Boolean!
+  error: String
+  subTodos: [SubTodo]
+}
+
 type SubTodo {
   id: Int!
+  todoId: Int
   title: String!
-  description: String
+  startDate: String!
+  endDate: String!
+  comments: [String]
   isAchieved: Boolean!
   createdAt: String!
   updatedAt: String

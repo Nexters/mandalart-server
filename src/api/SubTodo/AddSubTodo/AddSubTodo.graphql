@@ -1,0 +1,16 @@
+type AddSubTodoResponse {
+  ok: Boolean!
+  error: String
+  subTodo: SubTodo
+}
+
+type Mutation {
+  AddSubTodo(
+    todoId: Int!
+    title: String!
+    startDate: String!
+    endDate: String!
+    comments: [String]
+    isAchieved: Boolean! = false
+  ): AddSubTodoResponse!
+}
