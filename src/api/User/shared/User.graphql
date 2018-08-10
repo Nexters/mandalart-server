@@ -10,7 +10,7 @@ type User {
   updatedAt: String
   fullName: String
   fbId: String
-  mandalarts: [Mandalart]!
+  mandalarts: [Mandalart]
   todos: [Todo]!
   subTodos: [SubTodo]!
 }
