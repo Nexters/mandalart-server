@@ -1,10 +1,15 @@
-export const typeDefs = ["type AddMandalartResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Mutation {\n  AddMandalart(name: String!, startDate: String!, endDate: String!, goal: String!): AddMandalartResponse!\n  DeleteMandalart(mandalartId: Int!): DeleteMandalartResponse!\n  EditMandalart(mandalartId: Int!, name: String, endDate: String, goal: String): EditMandalartResponse!\n  AddTodo(title: String!, startDate: String!, endDate: String!, comments: [String], isAchieved: Boolean!): AddMandalartResponse!\n  EmailSignIn(email: String!, password: String!): EmailSignInResponse!\n  EmailSignUp(email: String!, password: String!, firstName: String!, lastName: String!, age: Int, profileImage: String): EmailSignUpResponse!\n  FacebookConnect(firstName: String!, lastName: String!, email: String!, fbId: String!): FacebookConnectResponse!\n}\n\ntype DeleteMandalartResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype EditMandalartResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype GetMyMandalartsResponse {\n  ok: Boolean!\n  error: String\n  mandalarts: [Mandalart]\n}\n\ntype Query {\n  GetMyMandalarts: GetMyMandalartsResponse!\n  GetMyProfile: GetMyProfileResponse!\n  Users: [User!]!\n}\n\ntype Mandalart {\n  id: Int!\n  name: String!\n  startDate: String!\n  endDate: String!\n  goal: String\n  createdAt: String!\n  updatedAt: String\n  achievementRate: Int\n  user: User!\n  todos: [Todo]!\n}\n\ntype SubTodo {\n  id: Int!\n  title: String!\n  description: String\n  isAchieved: Boolean!\n  createdAt: String!\n  updatedAt: String\n  user: User!\n  mandalart: Mandalart!\n  todo: Todo!\n}\n\ntype AddTodoResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Todo {\n  id: Int!\n  title: String!\n  startDate: String!\n  endDate: String!\n  comments: [String]\n  isAchieved: Boolean!\n  createdAt: String!\n  updatedAt: String\n  user: User!\n  mandalart: Mandalart!\n  subTodos: [SubTodo]!\n}\n\ntype EmailSignInResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype EmailSignUpResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype FacebookConnectResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype GetMyProfileResponse {\n  ok: Boolean!\n  error: String\n  user: User\n}\n\ntype User {\n  id: Int!\n  email: String\n  password: String\n  firstName: String\n  lastName: String\n  age: Int\n  profileImage: String\n  createdAt: String!\n  updatedAt: String\n  fullName: String\n  fbId: String\n  mandalarts: [Mandalart]\n  todos: [Todo]!\n  subTodos: [SubTodo]!\n}\n"];
+export const typeDefs = ["type AddMandalartResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Mutation {\n  AddMandalart(name: String!, startDate: String!, endDate: String!, goal: String!): AddMandalartResponse!\n  DeleteMandalart(mandalartId: Int!): DeleteMandalartResponse!\n  EditMandalart(mandalartId: Int!, name: String, endDate: String, goal: String): EditMandalartResponse!\n  AddTodo(mandalartId: Int!, title: String!, startDate: String!, endDate: String!, comments: [String], isAchieved: Boolean! = false): AddTodoResponse!\n  EmailSignIn(email: String!, password: String!): EmailSignInResponse!\n  EmailSignUp(email: String!, password: String!, firstName: String!, lastName: String!, age: Int, profileImage: String): EmailSignUpResponse!\n  FacebookConnect(firstName: String!, lastName: String!, email: String!, fbId: String!): FacebookConnectResponse!\n}\n\ntype DeleteMandalartResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype EditMandalartResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype GetMyMandalartsResponse {\n  ok: Boolean!\n  error: String\n  mandalarts: [Mandalart]\n}\n\ntype Query {\n  GetMyMandalarts: GetMyMandalartsResponse!\n  GetTodosByMandalartId(mandalartId: Int!): GetTodosByMandalartIdResponse!\n  GetMyProfile: GetMyProfileResponse!\n  Users: [User!]!\n}\n\ntype Mandalart {\n  id: Int!\n  name: String!\n  startDate: String!\n  endDate: String!\n  goal: String\n  createdAt: String!\n  updatedAt: String\n  achievementRate: Int\n  user: User!\n  todos: [Todo]!\n}\n\ntype SubTodo {\n  id: Int!\n  title: String!\n  description: String\n  isAchieved: Boolean!\n  createdAt: String!\n  updatedAt: String\n  user: User!\n  mandalart: Mandalart!\n  todo: Todo!\n}\n\ntype AddTodoResponse {\n  ok: Boolean!\n  error: String\n  todo: Todo\n}\n\ntype GetTodosByMandalartIdResponse {\n  ok: Boolean!\n  error: String\n  todos: [Todo]\n}\n\ntype Todo {\n  id: Int!\n  mandalartId: Int\n  title: String!\n  startDate: String!\n  endDate: String!\n  comments: [String]\n  isAchieved: Boolean!\n  createdAt: String!\n  updatedAt: String\n  user: User!\n  mandalart: Mandalart!\n  subTodos: [SubTodo]!\n}\n\ntype EmailSignInResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype EmailSignUpResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype FacebookConnectResponse {\n  ok: Boolean!\n  error: String\n  token: String\n}\n\ntype GetMyProfileResponse {\n  ok: Boolean!\n  error: String\n  user: User\n}\n\ntype User {\n  id: Int!\n  email: String\n  password: String\n  firstName: String\n  lastName: String\n  age: Int\n  profileImage: String\n  createdAt: String!\n  updatedAt: String\n  fullName: String\n  fbId: String\n  mandalarts: [Mandalart]\n  todos: [Todo]!\n  subTodos: [SubTodo]!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
   GetMyMandalarts: GetMyMandalartsResponse;
+  GetTodosByMandalartId: GetTodosByMandalartIdResponse;
   GetMyProfile: GetMyProfileResponse;
   Users: Array<User>;
+}
+
+export interface GetTodosByMandalartIdQueryArgs {
+  mandalartId: number;
 }
 
 export interface GetMyMandalartsResponse {
@@ -45,6 +50,7 @@ export interface User {
 
 export interface Todo {
   id: number;
+  mandalartId: number | null;
   title: string;
   startDate: string;
   endDate: string;
@@ -69,6 +75,12 @@ export interface SubTodo {
   todo: Todo;
 }
 
+export interface GetTodosByMandalartIdResponse {
+  ok: boolean;
+  error: string | null;
+  todos: Array<Todo> | null;
+}
+
 export interface GetMyProfileResponse {
   ok: boolean;
   error: string | null;
@@ -79,7 +91,7 @@ export interface Mutation {
   AddMandalart: AddMandalartResponse;
   DeleteMandalart: DeleteMandalartResponse;
   EditMandalart: EditMandalartResponse;
-  AddTodo: AddMandalartResponse;
+  AddTodo: AddTodoResponse;
   EmailSignIn: EmailSignInResponse;
   EmailSignUp: EmailSignUpResponse;
   FacebookConnect: FacebookConnectResponse;
@@ -104,6 +116,7 @@ export interface EditMandalartMutationArgs {
 }
 
 export interface AddTodoMutationArgs {
+  mandalartId: number;
   title: string;
   startDate: string;
   endDate: string;
@@ -147,6 +160,12 @@ export interface EditMandalartResponse {
   error: string | null;
 }
 
+export interface AddTodoResponse {
+  ok: boolean;
+  error: string | null;
+  todo: Todo | null;
+}
+
 export interface EmailSignInResponse {
   ok: boolean;
   error: string | null;
@@ -163,9 +182,4 @@ export interface FacebookConnectResponse {
   ok: boolean;
   error: string | null;
   token: string | null;
-}
-
-export interface AddTodoResponse {
-  ok: boolean;
-  error: string | null;
 }

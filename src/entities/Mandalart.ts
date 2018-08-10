@@ -13,7 +13,8 @@ import Todo from './Todo';
 
 @Entity()
 class Mandalart extends BaseEntity {
-  @PrimaryGeneratedColumn() id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column({ type: 'text' })
   name: string;
@@ -39,9 +40,11 @@ class Mandalart extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   goal: string | null;
 
-  @CreateDateColumn() createdAt: string;
+  @CreateDateColumn()
+  createdAt: string;
 
-  @UpdateDateColumn() updatedAt: string;
+  @UpdateDateColumn()
+  updatedAt: string;
 }
 
 export default Mandalart;

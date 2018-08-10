@@ -21,6 +21,7 @@ const resolvers: Resolvers = {
               const todo = await Todo.create({
                 ...args,
                 user,
+                mandalart,
               }).save();
               return {
                 ok: true,
