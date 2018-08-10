@@ -1,0 +1,13 @@
+type EditMandalartResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  EditMandalart(
+    mandalartId: Int!
+    name: String
+    endDate: String
+    goal: String
+  ): EditMandalartResponse!
+}

@@ -26,7 +26,7 @@ class Todo extends BaseEntity {
   endDate: string;
 
   @Column({ type: 'text', array: true, nullable: true })
-  comments: string[];
+  comments: string[] | null;
 
   @Column({ type: 'boolean', default: false })
   isAchieved: boolean;
