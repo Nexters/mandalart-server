@@ -20,6 +20,9 @@ class Todo extends BaseEntity {
   @Column({ type: 'int' })
   mandalartId: number;
 
+  @Column({ nullable: true })
+  userId: number;
+
   @Column({ type: 'text' })
   title: string;
 
