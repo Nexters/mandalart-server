@@ -8,5 +8,6 @@ type Mutation {
     name: String!
     startDate: String!
     endDate: String!
+    goal: String!
   ): AddMandalartResponse!
 }

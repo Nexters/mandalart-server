@@ -1,0 +1,14 @@
+type EditTodoResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  EditTodo(
+    todoId: Int!
+    title: String
+    endDate: String
+    comments: [String]
+    isAchieved: Boolean!
+  ): EditTodoResponse!
+}

@@ -1,0 +1,9 @@
+type GetSubTodosByTodoIdResponse {
+  ok: Boolean!
+  error: String
+  subTodos: [SubTodo]
+}
+
+type Query {
+  GetSubTodosByTodoId(todoId: Int!): GetSubTodosByTodoIdResponse!
+}

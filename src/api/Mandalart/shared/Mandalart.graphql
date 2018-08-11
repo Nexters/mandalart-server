@@ -3,6 +3,7 @@ type Mandalart {
   name: String!
   startDate: String!
   endDate: String!
+  goal: String
   createdAt: String!
   updatedAt: String
   achievementRate: Int
