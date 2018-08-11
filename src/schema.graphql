@@ -8,6 +8,7 @@ type Mutation {
   DeleteMandalart(mandalartId: Int!): DeleteMandalartResponse!
   EditMandalart(mandalartId: Int!, name: String, endDate: String, goal: String): EditMandalartResponse!
   AddSubTodo(todoId: Int!, title: String!, startDate: String!, endDate: String!, comments: [String], isAchieved: Boolean! = false): AddSubTodoResponse!
+  DeleteSubTodo(subTodoId: Int!): DeleteSubTodoResponse!
   EditSubTodo(subTodoId: Int!, title: String, endDate: String, comments: [String], isAchieved: Boolean!): EditSubTodoResponse!
   AddTodo(mandalartId: Int!, title: String!, startDate: String!, endDate: String!, comments: [String], isAchieved: Boolean! = false): AddTodoResponse!
   DeleteTodo(todoId: Int!): DeleteTodoResponse!
@@ -58,6 +59,11 @@ type AddSubTodoResponse {
   ok: Boolean!
   error: String
   subTodo: SubTodo
+}
+
+type DeleteSubTodoResponse {
+  ok: Boolean!
+  error: String
 }
 
 type EditSubTodoResponse {
