@@ -11,5 +11,5 @@ type Todo {
 
   user: User!
   mandalart: Mandalart!
-  subTodos: [SubTodo]!
+  subTodos: [SubTodo]
 }

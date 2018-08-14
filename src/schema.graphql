@@ -37,7 +37,9 @@ type GetMyMandalartsResponse {
 type Query {
   GetMyMandalarts: GetMyMandalartsResponse!
   GetSubTodosByTodoId(todoId: Int!): GetSubTodosByTodoIdResponse!
+  subTodo(id: Int!): SubTodo
   GetTodosByMandalartId(mandalartId: Int!): GetTodosByMandalartIdResponse!
+  todo(id: Int!): Todo
   GetMyProfile: GetMyProfileResponse!
   Users: [User!]!
 }
@@ -126,7 +128,7 @@ type Todo {
   updatedAt: String
   user: User!
   mandalart: Mandalart!
-  subTodos: [SubTodo]!
+  subTodos: [SubTodo]
 }
 
 type EmailSignInResponse {
