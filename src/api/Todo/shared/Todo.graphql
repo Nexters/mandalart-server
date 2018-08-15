@@ -13,3 +13,7 @@ type Todo {
   mandalart: Mandalart!
   subTodos: [SubTodo]
 }
+
+type Query {
+  todo(id: Int!): Todo
+}

@@ -44,8 +44,8 @@ class Todo extends BaseEntity {
   @ManyToOne(type => Mandalart, mandalart => mandalart.todos)
   mandalart: Mandalart;
 
-  @OneToMany(type => SubTodo, subTodo => subTodo.todo)
-  subTodos: SubTodo[];
+  @OneToMany(type => SubTodo, subTodo => subTodo.todo, { nullable: true })
+  subTodos: SubTodo[] | null;
 
   @CreateDateColumn()
   createdAt: string;
