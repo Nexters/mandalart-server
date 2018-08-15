@@ -8,7 +8,6 @@ import {
   ManyToOne,
 } from 'typeorm';
 
-import Mandalart from './Mandalart';
 import User from './User';
 import Todo from './Todo';
 
@@ -40,9 +39,6 @@ class SubTodo extends BaseEntity {
 
   @ManyToOne(type => User, user => user.todos)
   user: User;
-
-  @ManyToOne(type => Mandalart, mandalart => mandalart.todos)
-  mandalart: Mandalart;
 
   @ManyToOne(type => Todo, todo => todo.subTodos)
   todo: Todo;

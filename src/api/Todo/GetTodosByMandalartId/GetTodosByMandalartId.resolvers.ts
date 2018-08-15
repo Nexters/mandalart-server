@@ -5,8 +5,19 @@ import {
 } from '../../../types/graph';
 import { Resolvers } from '../../../types/resolvers';
 import privateResolver from '../../../utils/privateResolver';
+import { getRepository } from 'typeorm';
+import Todo from '../../../entities/Todo';
 
 const resolvers: Resolvers = {
+  GetTodosByMandalartIdResponse: {
+    todos: async obj => {
+      return await getRepository(Todo)
+        .createQueryBuilder('todo')
+        .where({ mandalartId: obj.todos[0].mandalartId })
+        .getMany();
+    },
+  },
+
   Query: {
     GetTodosByMandalartId: privateResolver(
       async (

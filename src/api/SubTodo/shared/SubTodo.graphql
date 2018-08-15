@@ -10,6 +10,9 @@ type SubTodo {
   updatedAt: String
 
   user: User!
-  mandalart: Mandalart!
   todo: Todo!
+}
+
+type Query {
+  subTodo(id: Int!): SubTodo
 }

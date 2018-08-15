@@ -11,5 +11,9 @@ type Todo {
 
   user: User!
   mandalart: Mandalart!
-  subTodos: [SubTodo]!
+  subTodos: [SubTodo]
+}
+
+type Query {
+  todo(id: Int!): Todo
 }

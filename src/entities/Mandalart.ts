@@ -28,8 +28,8 @@ class Mandalart extends BaseEntity {
   @ManyToOne(type => User, user => user.mandalarts)
   user: User;
 
-  @OneToMany(type => Todo, todo => todo.mandalart)
-  todos: Todo[];
+  @OneToMany(type => Todo, todo => todo.mandalart, { nullable: true })
+  todos: Todo[] | null;
 
   @Column({ type: 'text' })
   startDate: string;

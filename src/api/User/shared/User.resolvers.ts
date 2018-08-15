@@ -6,7 +6,7 @@ import User from '../../../entities/User';
 
 const resolvers: Resolvers = {
   Query: {
-    Users: privateResolver(
+    users: privateResolver(
       async _ =>
         await getRepository(User)
           .createQueryBuilder('user')
