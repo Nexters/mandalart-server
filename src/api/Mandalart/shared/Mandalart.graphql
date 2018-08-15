@@ -9,5 +9,5 @@ type Mandalart {
   achievementRate: Int
 
   user: User!
-  todos: [Todo]!
+  todos: [Todo]
 }
