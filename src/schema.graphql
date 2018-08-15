@@ -41,7 +41,7 @@ type Query {
   GetTodosByMandalartId(mandalartId: Int!): GetTodosByMandalartIdResponse!
   todo(id: Int!): Todo
   GetMyProfile: GetMyProfileResponse!
-  Users: [User!]!
+  users: [User!]!
 }
 
 type Mandalart {
@@ -54,7 +54,7 @@ type Mandalart {
   updatedAt: String
   achievementRate: Int
   user: User!
-  todos: [Todo]!
+  todos: [Todo]
 }
 
 type AddSubTodoResponse {
@@ -90,7 +90,6 @@ type SubTodo {
   createdAt: String!
   updatedAt: String
   user: User!
-  mandalart: Mandalart!
   todo: Todo!
 }
 

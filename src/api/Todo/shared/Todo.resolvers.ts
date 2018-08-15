@@ -16,10 +16,10 @@ const resolvers: Resolvers = {
         .getOne();
     },
 
-    mandalart: async obj => {
+    mandalart: async (obj, args, context, info) => {
       return await getRepository(Mandalart)
         .createQueryBuilder('mandalart')
-        .where({ todoId: obj.mandalartId })
+        .where({ id: obj.mandalartId })
         .getOne();
     },
 
