@@ -21,7 +21,8 @@ const BCRYPT_ROUNDS = 10;
 
 @Entity()
 class User extends BaseEntity {
-  @PrimaryGeneratedColumn() id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column({ type: 'text', nullable: true })
   @IsEmail()
@@ -42,15 +43,17 @@ class User extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   profileImage: string | null;
 
-  @CreateDateColumn() createdAt;
+  @CreateDateColumn()
+  createdAt;
 
-  @UpdateDateColumn() updatedAt;
+  @UpdateDateColumn()
+  updatedAt;
 
   @Column({ type: 'text', nullable: true })
   fbId: string;
 
-  @OneToMany(type => Mandalart, mandalart => mandalart.user)
-  mandalarts: Mandalart[];
+  @OneToMany(type => Mandalart, mandalart => mandalart.user, { nullable: true })
+  mandalarts: Mandalart[] | null;
 
   @OneToMany(type => Todo, todo => todo.user)
   todos: Todo[];

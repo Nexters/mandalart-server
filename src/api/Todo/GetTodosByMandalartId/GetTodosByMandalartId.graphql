@@ -1,0 +1,9 @@
+type GetTodosByMandalartIdResponse {
+  ok: Boolean!
+  error: String
+  todos: [Todo]
+}
+
+type Query {
+  GetTodosByMandalartId(mandalartId: Int!): GetTodosByMandalartIdResponse!
+}

@@ -4,10 +4,28 @@ type AddMandalartResponse {
 }
 
 type Mutation {
-  AddMandalart(name: String!, startDate: String!, endDate: String!): AddMandalartResponse!
+  AddMandalart(name: String!, startDate: String!, endDate: String!, goal: String!): AddMandalartResponse!
+  DeleteMandalart(mandalartId: Int!): DeleteMandalartResponse!
+  EditMandalart(mandalartId: Int!, name: String, endDate: String, goal: String): EditMandalartResponse!
+  AddSubTodo(todoId: Int!, title: String!, startDate: String!, endDate: String!, comments: [String], isAchieved: Boolean! = false): AddSubTodoResponse!
+  DeleteSubTodo(subTodoId: Int!): DeleteSubTodoResponse!
+  EditSubTodo(subTodoId: Int!, title: String, endDate: String, comments: [String], isAchieved: Boolean!): EditSubTodoResponse!
+  AddTodo(mandalartId: Int!, title: String!, startDate: String!, endDate: String!, comments: [String], isAchieved: Boolean! = false): AddTodoResponse!
+  DeleteTodo(todoId: Int!): DeleteTodoResponse!
+  EditTodo(todoId: Int!, title: String, endDate: String, comments: [String], isAchieved: Boolean!): EditTodoResponse!
   EmailSignIn(email: String!, password: String!): EmailSignInResponse!
   EmailSignUp(email: String!, password: String!, firstName: String!, lastName: String!, age: Int, profileImage: String): EmailSignUpResponse!
   FacebookConnect(firstName: String!, lastName: String!, email: String!, fbId: String!): FacebookConnectResponse!
+}
+
+type DeleteMandalartResponse {
+  ok: Boolean!
+  error: String
+}
+
+type EditMandalartResponse {
+  ok: Boolean!
+  error: String
 }
 
 type GetMyMandalartsResponse {
@@ -18,7 +36,12 @@ type GetMyMandalartsResponse {
 
 type Query {
   GetMyMandalarts: GetMyMandalartsResponse!
+  GetSubTodosByTodoId(todoId: Int!): GetSubTodosByTodoIdResponse!
+  subTodo(id: Int!): SubTodo
+  GetTodosByMandalartId(mandalartId: Int!): GetTodosByMandalartIdResponse!
+  todo(id: Int!): Todo
   GetMyProfile: GetMyProfileResponse!
+  users: [User!]!
 }
 
 type Mandalart {
@@ -26,35 +49,85 @@ type Mandalart {
   name: String!
   startDate: String!
   endDate: String!
+  goal: String
   createdAt: String!
   updatedAt: String
   achievementRate: Int
   user: User!
-  todos: [Todo]!
+  todos: [Todo]
+}
+
+type AddSubTodoResponse {
+  ok: Boolean!
+  error: String
+  subTodo: SubTodo
+}
+
+type DeleteSubTodoResponse {
+  ok: Boolean!
+  error: String
+}
+
+type EditSubTodoResponse {
+  ok: Boolean!
+  error: String
+}
+
+type GetSubTodosByTodoIdResponse {
+  ok: Boolean!
+  error: String
+  subTodos: [SubTodo]
 }
 
 type SubTodo {
   id: Int!
+  todoId: Int
   title: String!
-  description: String
+  startDate: String!
+  endDate: String!
+  comments: [String]
   isAchieved: Boolean!
   createdAt: String!
   updatedAt: String
   user: User!
-  mandalart: Mandalart!
   todo: Todo!
+}
+
+type AddTodoResponse {
+  ok: Boolean!
+  error: String
+  todo: Todo
+}
+
+type DeleteTodoResponse {
+  ok: Boolean!
+  error: String
+}
+
+type EditTodoResponse {
+  ok: Boolean!
+  error: String
+}
+
+type GetTodosByMandalartIdResponse {
+  ok: Boolean!
+  error: String
+  todos: [Todo]
 }
 
 type Todo {
   id: Int!
+  mandalartId: Int
   title: String!
-  description: String
+  startDate: String!
+  endDate: String!
+  comments: [String]
   isAchieved: Boolean!
   createdAt: String!
   updatedAt: String
   user: User!
   mandalart: Mandalart!
-  subTodos: [SubTodo]!
+  subTodos: [SubTodo]
 }
 
 type EmailSignInResponse {
@@ -93,7 +166,7 @@ type User {
   updatedAt: String
   fullName: String
   fbId: String
-  mandalarts: [Mandalart]!
+  mandalarts: [Mandalart]
   todos: [Todo]!
   subTodos: [SubTodo]!
 }
