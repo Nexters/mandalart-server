@@ -168,14 +168,13 @@ type User {
   fbId: String
   mandalarts: [Mandalart]
   todos: [Todo]!
-  subTodos: [SubTodo]!
   rating: Rating!
 }
 
 type Rating {
   id: Int!
   tier: Int!
-  tierImage: Int!
+  tierImage: String!
   totalScore: Int!
   createdAt: String!
   updatedAt: String

@@ -61,6 +61,7 @@ export interface User {
   mandalarts: Array<Mandalart> | null;
   todos: Array<Todo>;
   subTodos: Array<SubTodo>;
+  rating: Rating;
 }
 
 export interface Todo {
@@ -269,4 +270,25 @@ export interface FacebookConnectResponse {
   ok: boolean;
   error: string | null;
   token: string | null;
+}
+
+export interface Rating {
+  id: number;
+  tier: number;
+  tierImage: string;
+  totalScore: Int;
+  createdAt: string;
+  updatedAt: string | null;
+  userId: number | null;
+  user: User;
+  rewards: Array<Reward> | null;
+}
+
+export interface Reward {
+  id: number;
+  score: number;
+  ratingId: number;
+  rewardRating: Rating;
+  message: string | null;
+  createdAt: string;
 }
