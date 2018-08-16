@@ -1,0 +1,11 @@
+type Rating {
+  id: Int!
+  tier: Int!
+  tierImage: String!
+  totalScore: Int!
+  createdAt: String!
+  updatedAt: String
+  userId: Int
+  user: User!
+  rewards: [Reward]
+}

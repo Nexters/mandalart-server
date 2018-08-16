@@ -1,0 +1,13 @@
+type AddRewardResponse {
+  ok: Boolean!
+  error: String
+  reward: Reward
+}
+
+type Mutation {
+  AddReward(
+    ratingId: Int!
+    score: Int!
+    message: String
+  ): AddRewardResponse!
+}

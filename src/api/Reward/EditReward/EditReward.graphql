@@ -1,0 +1,12 @@
+type EditRewardResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  EditReward(
+    rewardId: Int!
+    score: Int!
+    message: String
+  ): EditRewardResponse!
+}

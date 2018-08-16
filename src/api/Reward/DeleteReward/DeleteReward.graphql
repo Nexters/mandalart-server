@@ -1,0 +1,8 @@
+type DeleteRewardResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  DeleteReward(rewardId: Int!): DeleteRewardResponse!
+}

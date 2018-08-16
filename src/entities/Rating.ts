@@ -38,7 +38,7 @@ class Rating extends BaseEntity {
   @ManyToOne(type => User, user => user.rating)
   user: User;
 
-  @OneToMany(type => Reward, rewards => rewards.rewardRating, {
+  @OneToMany(type => Reward, rewards => rewards.rating, {
     nullable: true
   })
   rewards: Reward[] | null;

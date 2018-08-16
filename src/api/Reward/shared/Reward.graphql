@@ -1,0 +1,12 @@
+type Reward {
+  id: Int!
+  score: Int!
+  ratingId: Int!
+  rating: Rating!
+  message: String
+  createdAt: String!
+}
+
+type Query {
+  reward(id: Int!): Reward
+}

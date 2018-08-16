@@ -20,8 +20,8 @@ class Reward extends BaseEntity {
   @Column({ type: "int" })
   ratingId: number;
 
-  @ManyToOne(type => Rating, rewardRating => rewardRating.rewards)
-  rewardRating: Rating;
+  @ManyToOne(type => Rating, rating => rating.rewards)
+  rating: Rating;
 
   @Column({ type: "text", nullable: true })
   message: string | null;

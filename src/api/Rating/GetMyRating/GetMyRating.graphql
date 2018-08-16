@@ -1,0 +1,9 @@
+type GetMyRatingResponse {
+  ok: Boolean!
+  error: String
+  rating: Rating
+}
+
+type Query {
+  GetMyRating: GetMyRatingResponse!
+}
