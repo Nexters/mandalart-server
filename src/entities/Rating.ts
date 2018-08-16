@@ -4,6 +4,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  CreateDateColumn,
   OneToMany,
   ManyToOne
 } from "typeorm";
@@ -25,14 +26,22 @@ class Rating extends BaseEntity {
   @Column({ type: "int" })
   totalScore: number;
 
+  @CreateDateColumn()
+  createdAt: string;
+
   @UpdateDateColumn()
   updatedAt: string;
+
+  @Column({ nullable: true })
+  userId: number;
 
   @ManyToOne(type => User, user => user.rating)
   user: User;
 
-  @OneToMany(type => Reward, rewards => rewards.rewardRating)
-  rewards: Reward[];
+  @OneToMany(type => Reward, rewards => rewards.rewardRating, {
+    nullable: true
+  })
+  rewards: Reward[] | null;
 }
 
 export default Rating;

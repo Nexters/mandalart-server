@@ -18,13 +18,13 @@ class Reward extends BaseEntity {
   score: number;
 
   @Column({ type: "int" })
-  targetId: number;
+  ratingId: number;
 
   @ManyToOne(type => Rating, rewardRating => rewardRating.rewards)
   rewardRating: Rating;
 
-  @Column({ type: "text" })
-  message: string;
+  @Column({ type: "text", nullable: true })
+  message: string | null;
 
   @CreateDateColumn()
   createdAt: string;

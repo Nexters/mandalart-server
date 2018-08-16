@@ -170,3 +170,24 @@ type User {
   todos: [Todo]!
   subTodos: [SubTodo]!
 }
+
+type Rating {
+  id: Int!
+  tier: Int!
+  tierImage: Int!
+  totalScore: Int!
+  createdAt: String!
+  updatedAt: String
+  userId: String
+  user: User!
+  rewards: [Reward]
+}
+
+type Reward {
+  id: Int!
+  score: Int!
+  ratingId: Int!
+  rewardRating: Rating!
+  message: String
+  createdAt: String!
+}
