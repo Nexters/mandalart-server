@@ -1,5 +1,5 @@
 import Reward from '../../../entities/Reward';
-import Rating from '../../../entities/Rating';
+import Mandalart from '../../../entities/Mandalart';
 import {
   DeleteRewardMutationArgs,
   DeleteRewardResponse,
@@ -15,11 +15,11 @@ const resolvers: Resolvers = {
         args: DeleteRewardMutationArgs,
         { req }
       ): Promise<DeleteRewardResponse> => {
-        const rating: Rating = req.rating;
+        const mandalart: Mandalart = req.mandalart;
         try {
           const reward = await Reward.findOne({ id: args.rewardId });
           if (reward) {
-            if (reward.ratingId === rating.id) {
+            if (reward.mandalart.id === mandalart.id) {
               reward.remove();
               return {
                 ok: true,

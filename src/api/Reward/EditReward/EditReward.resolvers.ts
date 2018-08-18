@@ -17,7 +17,7 @@ const resolvers: Resolvers = {
         try {
           const reward = await Reward.findOne({ id: args.rewardId });
           if (reward) {
-            if (reward.mandalartId === mandalart.id) {
+            if (reward.mandalart.id === mandalart.id) {
               const notNull = cleanNullArgs(args);
               await Reward.update({ id: args.rewardId }, { ...notNull });
               return {
