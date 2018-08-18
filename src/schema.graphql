@@ -63,6 +63,10 @@ type Mandalart {
   rewards: [Reward]
 }
 
+type Subscription {
+  AchieveSubscription: SubTodo
+}
+
 type AddRewardResponse {
   ok: Boolean!
   error: String
