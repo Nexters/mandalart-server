@@ -4,10 +4,8 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  ManyToOne
 } from "typeorm";
 
-import Rating from "./Rating";
 
 @Entity()
 class Reward extends BaseEntity {
@@ -15,16 +13,13 @@ class Reward extends BaseEntity {
   id: number;
 
   @Column({ type: "int" })
-  score: number;
+  mandalartId: number;
+
+  @Column({ type: "text" })
+  message: string;
 
   @Column({ type: "int" })
-  ratingId: number;
-
-  @ManyToOne(type => Rating, rating => rating.rewards)
-  rating: Rating;
-
-  @Column({ type: "text", nullable: true })
-  message: string | null;
+  percentage: number;
 
   @CreateDateColumn()
   createdAt: string;

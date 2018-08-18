@@ -3,7 +3,7 @@ import User from "../../../entities/User";
 import { AddRewardMutationArgs, AddRewardResponse } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
-import Rating from "../../../entities/Rating";
+import Mandalart from "../../../entities/Mandalart";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -15,12 +15,11 @@ const resolvers: Resolvers = {
       ): Promise<AddRewardResponse> => {
         const user: User = req.user;
         try {
-          const rating = await Rating.findOne({ id: args.ratingId });
-          if (rating) {
-            if (rating.userId === user.id) {
+          const mandalart = await Mandalart.findOne({ id: args.mandalartId });
+          if (mandalart) {
+            if (mandalart.userId === user.id) {
               const reward = await Reward.create({
                 ...args,
-                rating,
               }).save();
               return {
                 ok: true,

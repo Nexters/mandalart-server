@@ -1,8 +1,0 @@
-type DeleteRatingResponse {
-  ok: Boolean!
-  error: String
-}
-
-type Mutation {
-  DeleteRating(ratingId: Int!): DeleteRatingResponse!
-}

@@ -3,14 +3,15 @@ import { getRepository } from 'typeorm';
 import { Resolvers } from '../../../types/resolvers';
 import privateResolver from '../../../utils/privateResolver';
 import Reward from '../../../entities/Reward';
-import Rating from '../../../entities/Rating';
+import Mandalart from '../../../entities/Mandalart';
+
 
 const resolvers: Resolvers = {
   Reward: {
-    rating: async (obj, args, context, info) => {
-      return await getRepository(Rating)
-        .createQueryBuilder('rating')
-        .where({ id: obj.ratingId })
+    mandalart: async (obj, args, context, info) => {
+      return await getRepository(Mandalart)
+        .createQueryBuilder('mandalart')
+        .where({ mandalartId: obj.id })
         .getOne();
     },
   },

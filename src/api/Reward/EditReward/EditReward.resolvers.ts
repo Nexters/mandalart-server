@@ -1,5 +1,5 @@
 import Reward from '../../../entities/Reward';
-import Rating from '../../../entities/Rating';
+import Mandalart from '../../../entities/Mandalart';
 import { EditRewardMutationArgs, EditRewardResponse } from '../../../types/graph';
 import { Resolvers } from '../../../types/resolvers';
 import cleanNullArgs from '../../../utils/cleanNullArg';
@@ -13,11 +13,11 @@ const resolvers: Resolvers = {
         args: EditRewardMutationArgs,
         { req }
       ): Promise<EditRewardResponse> => {
-        const rating: Rating = req.rating;
+        const mandalart: Mandalart = req.mandalart;
         try {
           const reward = await Reward.findOne({ id: args.rewardId });
           if (reward) {
-            if (reward.ratingId === rating.id) {
+            if (reward.mandalartId === mandalart.id) {
               const notNull = cleanNullArgs(args);
               await Reward.update({ id: args.rewardId }, { ...notNull });
               return {

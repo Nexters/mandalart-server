@@ -6,8 +6,8 @@ type AddRewardResponse {
 
 type Mutation {
   AddReward(
-    ratingId: Int!
-    score: Int!
-    message: String
+    mandalartId: Int!
+    percentage: Int!
+    message: String!
   ): AddRewardResponse!
 }

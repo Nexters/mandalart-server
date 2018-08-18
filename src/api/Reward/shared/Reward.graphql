@@ -1,9 +1,8 @@
 type Reward {
   id: Int!
-  score: Int!
-  ratingId: Int!
-  rating: Rating!
-  message: String
+  mandalart: Mandalart!
+  percentage: Int!
+  message: String!
   createdAt: String!
 }
 

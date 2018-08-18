@@ -6,7 +6,8 @@ type EditRewardResponse {
 type Mutation {
   EditReward(
     rewardId: Int!
-    score: Int!
+    mandalartId: Int!
+    percentage: Int!
     message: String
   ): EditRewardResponse!
 }

@@ -10,12 +10,10 @@ import {
   BeforeInsert,
   BeforeUpdate,
   OneToMany,
-  OneToOne,
 } from 'typeorm';
 import Mandalart from './Mandalart';
 import Todo from './Todo';
 import SubTodo from './SubTodo';
-import Rating from './Rating';
 
 const BCRYPT_ROUNDS = 10;
 
@@ -60,9 +58,6 @@ class User extends BaseEntity {
 
   @OneToMany(type => SubTodo, subTodo => subTodo.user)
   subTodos: SubTodo[];
-
-  @OneToOne(type => Rating, rating => rating.user)
-  rating: Rating;
 
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;

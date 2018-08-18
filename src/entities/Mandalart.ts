@@ -10,6 +10,7 @@ import {
 } from 'typeorm';
 import User from './User';
 import Todo from './Todo';
+import Reward from './Reward';
 
 @Entity()
 class Mandalart extends BaseEntity {
@@ -30,6 +31,9 @@ class Mandalart extends BaseEntity {
 
   @OneToMany(type => Todo, todo => todo.mandalart, { nullable: true })
   todos: Todo[] | null;
+
+  @OneToMany(type => Reward, reward => reward.mandalart, { nullable: true })
+  rewards: Reward[] | null;
 
   @Column({ type: 'text' })
   startDate: string;
