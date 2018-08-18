@@ -1,7 +1,7 @@
-import Rating from '../../../entities/Rating';
+import Mandalart from '../../../entities/Mandalart';
 import {
-  GetRewardsByRatingIdQueryArgs,
-  GetRewardsByRatingIdResponse,
+  GetRewardsByMandalartIdQueryArgs,
+  GetRewardsByMandalartIdResponse,
 } from '../../../types/graph';
 import { Resolvers } from '../../../types/resolvers';
 import privateResolver from '../../../utils/privateResolver';
@@ -9,32 +9,32 @@ import { getRepository } from 'typeorm';
 import Reward from '../../../entities/Reward';
 
 const resolvers: Resolvers = {
-  GetRewardsByRatingIdResponse: {
+  GetRewardsByMandalartIdResponse: {
     rewards: async obj => {
       return await getRepository(Reward)
         .createQueryBuilder('reward')
-        .where({ ratingId: obj.rewards[0].ratingId })
+        .where({ mandalartId: obj.rewards[0].mandalartId })
         .getMany();
     },
   },
 
   Query: {
-    GetRewardsByRatingId: privateResolver(
+    GetRewardsByMandalartId: privateResolver(
       async (
         _,
-        args: GetRewardsByRatingIdQueryArgs,
+        args: GetRewardsByMandalartIdQueryArgs,
         { req }
-      ): Promise<GetRewardsByRatingIdResponse> => {
+      ): Promise<GetRewardsByMandalartIdResponse> => {
         try {
-          const rating = await Rating.findOne(
-            { id: args.ratingId },
+          const mandalart = await Mandalart.findOne(
+            { id: args.mandalartId },
             { relations: ['rewards'] }
           );
-          if (rating) {
+          if (mandalart) {
             return {
               ok: true,
               error: null,
-              rewards: rating.rewards,
+              rewards: mandalart.rewards,
             };
           } else {
             return {
