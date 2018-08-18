@@ -1,0 +1,9 @@
+type GetRewardsByRatingIdResponse {
+  ok: Boolean!
+  error: String
+  rewards: [Reward]
+}
+
+type Query {
+  GetRewardsByRatingId(ratingId: Int!): GetRewardsByRatingIdResponse!
+}

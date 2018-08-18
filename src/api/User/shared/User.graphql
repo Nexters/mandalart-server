@@ -13,6 +13,7 @@ type User {
   mandalarts: [Mandalart]
   todos: [Todo]!
   subTodos: [SubTodo]!
+  rating: Rating
 }
 
 type Query {

@@ -7,6 +7,12 @@ type Mutation {
   AddMandalart(name: String!, startDate: String!, endDate: String!, goal: String!): AddMandalartResponse!
   DeleteMandalart(mandalartId: Int!): DeleteMandalartResponse!
   EditMandalart(mandalartId: Int!, name: String, endDate: String, goal: String): EditMandalartResponse!
+  AddRating(tier: Int!, tierImage: String!, totalScore: Int!): AddRatingResponse!
+  DeleteRating(ratingId: Int!): DeleteRatingResponse!
+  EditRating(ratingId: Int!, tier: Int!, tierImage: String!, totalScore: Int!): EditRatingResponse!
+  AddReward(ratingId: Int!, score: Int!, message: String): AddRewardResponse!
+  DeleteReward(rewardId: Int!): DeleteRewardResponse!
+  EditReward(rewardId: Int!, score: Int!, message: String): EditRewardResponse!
   AddSubTodo(todoId: Int!, title: String!, startDate: String!, endDate: String!, comments: [String], isAchieved: Boolean! = false): AddSubTodoResponse!
   DeleteSubTodo(subTodoId: Int!): DeleteSubTodoResponse!
   EditSubTodo(subTodoId: Int!, title: String, endDate: String, comments: [String], isAchieved: Boolean!): EditSubTodoResponse!
@@ -36,6 +42,9 @@ type GetMyMandalartsResponse {
 
 type Query {
   GetMyMandalarts: GetMyMandalartsResponse!
+  GetMyRating: GetMyRatingResponse!
+  GetRewardsByRatingId(ratingId: Int!): GetRewardsByRatingIdResponse!
+  reward(id: Int!): Reward
   GetSubTodosByTodoId(todoId: Int!): GetSubTodosByTodoIdResponse!
   subTodo(id: Int!): SubTodo
   GetTodosByMandalartId(mandalartId: Int!): GetTodosByMandalartIdResponse!
@@ -55,6 +64,70 @@ type Mandalart {
   achievementRate: Int
   user: User!
   todos: [Todo]
+}
+
+type AddRatingResponse {
+  ok: Boolean!
+  error: String
+}
+
+type DeleteRatingResponse {
+  ok: Boolean!
+  error: String
+}
+
+type EditRatingResponse {
+  ok: Boolean!
+  error: String
+}
+
+type GetMyRatingResponse {
+  ok: Boolean!
+  error: String
+  rating: Rating
+}
+
+type Rating {
+  id: Int!
+  tier: Int!
+  tierImage: String!
+  totalScore: Int!
+  createdAt: String!
+  updatedAt: String
+  userId: Int
+  user: User!
+  rewards: [Reward]
+}
+
+type AddRewardResponse {
+  ok: Boolean!
+  error: String
+  reward: Reward
+}
+
+type DeleteRewardResponse {
+  ok: Boolean!
+  error: String
+}
+
+type EditRewardResponse {
+  ok: Boolean!
+  error: String
+}
+
+type GetRewardsByRatingIdResponse {
+  ok: Boolean!
+  error: String
+  rewards: [Reward]
+}
+
+type Reward {
+  id: Int!
+  score: Int!
+  ratingId: Int!
+  rating: Rating!
+  message: String
+  createdAt: String!
 }
 
 type AddSubTodoResponse {
@@ -169,4 +242,5 @@ type User {
   mandalarts: [Mandalart]
   todos: [Todo]!
   subTodos: [SubTodo]!
+  rating: Rating
 }
