@@ -5,9 +5,7 @@ import {
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
-  ManyToOne,
 } from "typeorm";
-import Mandalart from "./Mandalart";
 
 import Mandalart from './Mandalart';
 
@@ -24,9 +22,6 @@ class Reward extends BaseEntity {
 
   @Column({ type: "int" })
   percentage: number;
-
-  @ManyToOne(type => Mandalart, mandalart => mandalart.rewards)
-  mandalart: Mandalart;
 
   @CreateDateColumn()
   createdAt: string;
