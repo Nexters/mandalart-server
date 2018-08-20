@@ -15,7 +15,7 @@ type Mutation {
   EditTodo(todoId: Int!, title: String, endDate: String, comments: [String], isAchieved: Boolean!): EditTodoResponse!
   EmailSignIn(email: String!, password: String!): EmailSignInResponse!
   EmailSignUp(email: String!, password: String!, firstName: String!, lastName: String!, age: Int, profileImage: String): EmailSignUpResponse!
-  FacebookConnect(firstName: String!, lastName: String!, email: String!, fbId: String!): FacebookConnectResponse!
+  FacebookConnect(firstName: String!, lastName: String!, email: String, fbId: String!): FacebookConnectResponse!
 }
 
 type DeleteMandalartResponse {
