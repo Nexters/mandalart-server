@@ -1,0 +1,11 @@
+type Reward {
+  id: Int!
+  mandalart: Mandalart!
+  percentage: Int!
+  message: String!
+  createdAt: String!
+}
+
+type Query {
+  reward(id: Int!): Reward
+}

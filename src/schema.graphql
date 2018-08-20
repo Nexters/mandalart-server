@@ -7,6 +7,9 @@ type Mutation {
   AddMandalart(name: String!, startDate: String!, endDate: String!, goal: String!): AddMandalartResponse!
   DeleteMandalart(mandalartId: Int!): DeleteMandalartResponse!
   EditMandalart(mandalartId: Int!, name: String, endDate: String, goal: String): EditMandalartResponse!
+  AddReward(mandalartId: Int!, percentage: Int!, message: String!): AddRewardResponse!
+  DeleteReward(rewardId: Int!): DeleteRewardResponse!
+  EditReward(rewardId: Int!, mandalartId: Int!, percentage: Int!, message: String): EditRewardResponse!
   AddSubTodo(todoId: Int!, title: String!, startDate: String!, endDate: String!, comments: [String], isAchieved: Boolean! = false): AddSubTodoResponse!
   DeleteSubTodo(subTodoId: Int!): DeleteSubTodoResponse!
   EditSubTodo(subTodoId: Int!, title: String, endDate: String, comments: [String], isAchieved: Boolean!): EditSubTodoResponse!
@@ -36,6 +39,8 @@ type GetMyMandalartsResponse {
 
 type Query {
   GetMyMandalarts: GetMyMandalartsResponse!
+  GetRewardsByMandalartId(mandalartId: Int!): GetRewardsByMandalartIdResponse!
+  reward(id: Int!): Reward
   GetSubTodosByTodoId(todoId: Int!): GetSubTodosByTodoIdResponse!
   subTodo(id: Int!): SubTodo
   GetTodosByMandalartId(mandalartId: Int!): GetTodosByMandalartIdResponse!
@@ -52,9 +57,44 @@ type Mandalart {
   goal: String
   createdAt: String!
   updatedAt: String
-  achievementRate: Int
+  achievementRate: Float
   user: User!
   todos: [Todo]
+  rewards: [Reward]
+}
+
+type Subscription {
+  AchieveSubscription: SubTodo
+}
+
+type AddRewardResponse {
+  ok: Boolean!
+  error: String
+  reward: Reward
+}
+
+type DeleteRewardResponse {
+  ok: Boolean!
+  error: String
+}
+
+type EditRewardResponse {
+  ok: Boolean!
+  error: String
+}
+
+type GetRewardsByMandalartIdResponse {
+  ok: Boolean!
+  error: String
+  rewards: [Reward]
+}
+
+type Reward {
+  id: Int!
+  mandalart: Mandalart!
+  percentage: Int!
+  message: String!
+  createdAt: String!
 }
 
 type AddSubTodoResponse {

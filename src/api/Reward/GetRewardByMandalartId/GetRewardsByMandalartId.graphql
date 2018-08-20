@@ -1,0 +1,9 @@
+type GetRewardsByMandalartIdResponse {
+  ok: Boolean!
+  error: String
+  rewards: [Reward]
+}
+
+type Query {
+  GetRewardsByMandalartId(mandalartId: Int!): GetRewardsByMandalartIdResponse!
+}

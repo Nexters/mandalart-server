@@ -1,0 +1,13 @@
+type AddRewardResponse {
+  ok: Boolean!
+  error: String
+  reward: Reward
+}
+
+type Mutation {
+  AddReward(
+    mandalartId: Int!
+    percentage: Int!
+    message: String!
+  ): AddRewardResponse!
+}

@@ -6,8 +6,9 @@ type Mandalart {
   goal: String
   createdAt: String!
   updatedAt: String
-  achievementRate: Int
+  achievementRate: Float
 
   user: User!
   todos: [Todo]
+  rewards: [Reward]
 }
