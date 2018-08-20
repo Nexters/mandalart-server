@@ -14,6 +14,9 @@ class Reward extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ type: 'int' })
+  mandalartId: number;
+
   @ManyToOne(type => Mandalart, mandalart => mandalart.todos)
   mandalart: Mandalart;
 
