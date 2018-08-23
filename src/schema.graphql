@@ -31,13 +31,14 @@ type EditMandalartResponse {
   error: String
 }
 
-type GetMyMandalartsResponse {
+type GetMandalartResponse {
   ok: Boolean!
   error: String
-  mandalarts: [Mandalart]
+  mandalart: Mandalart
 }
 
 type Query {
+  GetMandalart(mandalartId: Int!): GetMandalartResponse
   GetMyMandalarts: GetMyMandalartsResponse!
   GetRewardsByMandalartId(mandalartId: Int!): GetRewardsByMandalartIdResponse!
   reward(id: Int!): Reward
@@ -47,6 +48,12 @@ type Query {
   todo(id: Int!): Todo
   GetMyProfile: GetMyProfileResponse!
   users: [User!]!
+}
+
+type GetMyMandalartsResponse {
+  ok: Boolean!
+  error: String
+  mandalarts: [Mandalart]
 }
 
 type Mandalart {
